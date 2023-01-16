@@ -1,3 +1,8 @@
+package customer;
+
+import customer.Address;
+import customer.Customer;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

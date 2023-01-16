@@ -1,3 +1,7 @@
+package customer;
+
+import customer.Customer;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,3 +1,5 @@
+package customer;
+
 public class Address {
     private String streetNumber,streetName,additionalAddressLine,zipCode,state;
 

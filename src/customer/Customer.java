@@ -1,4 +1,7 @@
-import java.util.ArrayList;
+package customer;
+
+import customer.Address;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -6,10 +9,10 @@ public class Customer {
 private UUID id;//to find unique
     private String userName,email;
     //my customer  has object of address
-//{hilal,hilal@cydeo.com,{7823,abcstreet,22000}};=>Customer object
-  //  private Address address;//we have one addres for multiple adress
+//{hilal,hilal@cydeo.com,{7823,abcstreet,22000}};=>customer.Customer object
+  //  private customer.Address address;//we have one addres for multiple adress
     //more than one meaning list
-//private ArrayList<Address> adress;//it is ok but not preferable
+//private ArrayList<customer.Address> adress;//it is ok but not preferable
     private List<Address> address;//for polymorhism //thigives flexibility//always put Interface  not class
 
     public Customer(UUID id, String userName, String email) {
