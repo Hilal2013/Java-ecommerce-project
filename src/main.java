@@ -1,10 +1,12 @@
-public class main {
+import javax.xml.crypto.Data;
 
+public class main {
     public static void main(String[] args) {
-createCustomer();
-createProduct();
-createCategory();
-createBalance();
-createDiscount();
+        //createCustomer();we should import we should call through classname
+DataGenerator.createCustomer();
+//DataGenerator.createProduct();
+//DataGenerator.createCategory();
+//DataGenerator.createBalance();
+//DataGenerator.createDiscount();
     }
 }

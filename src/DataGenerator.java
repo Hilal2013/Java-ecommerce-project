@@ -17,7 +17,9 @@ public class DataGenerator {
 Customer customer1=new Customer(UUID.randomUUID(),"hilal","hilal@cydeo.com", customer1AddressList);
 //I can create other customer object without address
         Customer customer2=new Customer(UUID.randomUUID(),"ozzy","ozzy@cydeo.com");
-
+        //I had created two customer and Im gonna put in my database(staticConstant)
+StaticConstants.CUSTOMER_LIST.add(customer1);
+StaticConstants.CUSTOMER_LIST.add(customer2);
 
 
     }
