@@ -1,7 +1,7 @@
-public class Customer {
+public class Address {
     private String streetNumber,streetName,additionalAddressLine,zipCode,state;
 
-    public Customer(String streetNumber, String streetName, String additionalAddressLine, String zipCode, String state) {
+    public Address(String streetNumber, String streetName, String additionalAddressLine, String zipCode, String state) {
         this.streetNumber = streetNumber;
         this.streetName = streetName;
         this.additionalAddressLine = additionalAddressLine;
