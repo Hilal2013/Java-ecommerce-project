@@ -1,5 +1,4 @@
-package customer;
-
+import category.Category;
 import customer.Customer;
 
 import java.util.ArrayList;
@@ -9,5 +8,9 @@ public class StaticConstants {
 
     public static final List<Customer> CUSTOMER_LIST=new ArrayList<>();
 //final because this is database it shouldn't be changed at all
+public static final List<Category> CATEGORY_LIST=new ArrayList<>();
+
+
+
 
 }
