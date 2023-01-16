@@ -1,9 +1,15 @@
+import balance.Balance;
+import balance.CustomerBalance;
+import balance.GiftCardBalance;
 import category.Category;
 import category.Electronic;
 import category.Furniture;
 import category.SkinCare;
 import customer.Address;
 import customer.Customer;
+import discount.AmountBasedDiscount;
+import discount.Discount;
+import discount.RateBasedDiscount;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +27,14 @@ public class DataGenerator {
         List<Address> customer1AddressList = new ArrayList<>();
         customer1AddressList.add(address1Customer1);
         customer1AddressList.add(address2Customer1);
-Customer customer1=new Customer(UUID.randomUUID(),"hilal","hilal@cydeo.com", customer1AddressList);
+Customer customer1=new Customer(UUID.randomUUID(),"ozzy","ozzy@cydeo.com", customer1AddressList);
 //I can create other customer object without address
-        Customer customer2=new Customer(UUID.randomUUID(),"ozzy","ozzy@cydeo.com");
+        Customer customer2=new Customer(UUID.randomUUID(),"hilal","hilal@cydeo.com");
         //I had created two customer and Im gonna put in my database(staticConstant)
 StaticConstants.CUSTOMER_LIST.add(customer1);
 StaticConstants.CUSTOMER_LIST.add(customer2);
 
-
     }
-
 
     public static void createCategory() {
 Category category1 =new Electronic(UUID.randomUUID(),"Electronic");
@@ -41,10 +45,7 @@ StaticConstants.CATEGORY_LIST.add(category1);
         StaticConstants.CATEGORY_LIST.add(category2);
         StaticConstants.CATEGORY_LIST.add(category3);
 
-
-
     }
-
 
     public static void createProduct() {
 
@@ -54,5 +55,25 @@ StaticConstants.CATEGORY_LIST.add(category1);
 StaticConstants.PRODUCT_LIST.add(product1);
         StaticConstants.PRODUCT_LIST.add(product2);
         StaticConstants.PRODUCT_LIST.add(product3);
+    }
+
+    public static void createBalance() {
+Balance customerBalance=new CustomerBalance(StaticConstants.CUSTOMER_LIST.get(0).getId(),450.000);
+        Balance giftCardBalance=new GiftCardBalance(StaticConstants.CUSTOMER_LIST.get(1).getId(),500.000);
+        StaticConstants.CUSTOMER_BALANCE_LIST.add(customerBalance);
+        StaticConstants.CUSTOMER_BALANCE_LIST.add(giftCardBalance);
+    }
+
+
+    public static void createDiscount() {
+       Discount amountBasedDiscount=new AmountBasedDiscount(UUID.randomUUID(),"Buy 250 Free50",250.00,50.00);
+       Discount rateBasedDiscount=new RateBasedDiscount(UUID.randomUUID(),"Buy 250 Free %15",250.00,15.00);
+StaticConstants.DISCOUNT_LIST.add(amountBasedDiscount);
+StaticConstants.DISCOUNT_LIST.add(rateBasedDiscount);
+
+
+
+
+
     }
 }

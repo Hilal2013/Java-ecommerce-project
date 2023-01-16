@@ -4,7 +4,7 @@ public class main {
 DataGenerator.createCustomer();
 DataGenerator.createProduct();
 DataGenerator.createCategory();
-//DataGenerator.createBalance();
-//DataGenerator.createDiscount();
+DataGenerator.createBalance();
+DataGenerator.createDiscount();
     }
 }
