@@ -95,7 +95,8 @@ public class main {
                 case 5:
                     Map<Product, Integer> map = new HashMap<>();
                     cart.setProductMap(map);
-                    while (true) {//to keep adding products in my cart
+                    while (true) {
+                        //to keep adding products in my cart
                         System.out.println("Which product you want to add to your cart.For exit product selection Type: exit");
                         //if customer wants keep adding I need to show the products
                         for (Product product : StaticConstants.PRODUCT_LIST) {
@@ -127,8 +128,12 @@ public class main {
                         if (!decision.equals("Y")) {
                             break;
                         }
+                        System.out.println("seems there are discount options. Do you want to see and apply to your cart if it is applicable. For no discount type no");
+for(Discount discount:StaticConstants.DISCOUNT_LIST){
+    System.out.println("Discount id: "+discount.getDiscountId()+" Discount name: "+discount.getName());
+    String discountId=scanner.next();
 
-
+}
                     }
                     break;
                 case 6:
