@@ -51,10 +51,13 @@ StaticConstants.CATEGORY_LIST.add(category1);
 
         Product product1 =new Product(UUID.randomUUID(),"PS5",230.72,7,7,StaticConstants.CATEGORY_LIST.get(0).getId());
         Product product2 =new Product(UUID.randomUUID(),"XBOX",100.5,15,15,StaticConstants.CATEGORY_LIST.get(0).getId());
-        Product product3 =new Product(UUID.randomUUID(),"FS4",30.72,80,80,StaticConstants.CATEGORY_LIST.get(1).getId());
+        Product product3 =new Product(UUID.randomUUID(),"Chair",30.72,85,85,StaticConstants.CATEGORY_LIST.get(1).getId());
+        Product product4 =new Product(UUID.randomUUID(),"Milk",2.87,185,80,UUID.randomUUID());
+
 StaticConstants.PRODUCT_LIST.add(product1);
         StaticConstants.PRODUCT_LIST.add(product2);
         StaticConstants.PRODUCT_LIST.add(product3);
+        StaticConstants.PRODUCT_LIST.add(product4);
     }
 
     public static void createBalance() {
@@ -66,8 +69,8 @@ Balance customerBalance=new CustomerBalance(StaticConstants.CUSTOMER_LIST.get(0)
 
 
     public static void createDiscount() {
-       Discount amountBasedDiscount=new AmountBasedDiscount(UUID.randomUUID(),"Buy 250 Free50",250.00,50.00);
-       Discount rateBasedDiscount=new RateBasedDiscount(UUID.randomUUID(),"Buy 250 Free %15",250.00,15.00);
+       Discount amountBasedDiscount=new AmountBasedDiscount(UUID.randomUUID(),"Buy 250 Free 50",250.00,50.00);
+       Discount rateBasedDiscount=new RateBasedDiscount(UUID.randomUUID(),"Buy 500 Free %15",500.00,15.00);
 StaticConstants.DISCOUNT_LIST.add(amountBasedDiscount);
 StaticConstants.DISCOUNT_LIST.add(rateBasedDiscount);
 
