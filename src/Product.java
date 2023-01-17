@@ -1,5 +1,6 @@
 import category.Category;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Product {
@@ -42,17 +43,36 @@ public class Product {
         return categoryID;
     }
 
-    public String getProductCategoryName() throws Exception {
-        //you have the category id please go to database and check all category ids and find matching one and return the category name
+    public String getCategoryName() throws Exception {
 
-        for(Category category: StaticConstants.CATEGORY_LIST){
-            if(getCategoryID().toString().equals(category.getId().toString()));
-            return category.getName();
+        for(Category category : StaticConstants.CATEGORY_LIST){
+            if(getCategoryID().toString().equals(category.getId().toString())){
+                return category.getName();
+            }
         }
-        //return null//null isnt good//instead of null throw exception
         throw new Exception("Category not found," + getName());
-        //we created new object belongs to Exception class
-        //i dont want to sop application i wanna handle. it can give me warning but it should be up and running
+
     }
 
+    public LocalDateTime getDeliveryDueDate() throws Exception {
+//dueDate is inside the category//find the category and check the delivery duedate//
+     //Im checking each categories whenever I found the category of product that im trying to choose
+        //im returning duedate
+        for(Category category : StaticConstants.CATEGORY_LIST){
+            if(getCategoryID().toString().equals(category.getId().toString())){
+                return category.findDeliveryDueDate();
+            }
+        }
+      //if i cannnot find anything I will say this category is not existing
+        throw new Exception ("Category could not find");
+
+    }
+
+
 }
+//you have the category id please go to database and check all category ids and find matching one and return the category name
+
+//return null//null isnt good//instead of null throw exception
+
+//we created new object belongs to Exception class
+//i dont want to sop application i wanna handle. it can give me warning but it should be up and running
