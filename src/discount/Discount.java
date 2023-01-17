@@ -1,22 +1,27 @@
 package discount;
 
+import java.lang.reflect.AnnotatedWildcardType;
 import java.util.UUID;
 
 public abstract  class Discount {
-    private UUID discountId;
+    private UUID id;
     private String name;
     private Double thresholdAmount;
 
-    public Discount(UUID discountId, String name, Double thresholdAmount) {
-        this.discountId = discountId;
+    public Discount(UUID id, String name, Double thresholdAmount) {
+        this.id = id;
         this.name = name;
         this.thresholdAmount = thresholdAmount;
     }
 
-    public abstract Double calculateCartAmountAfterDiscount(Double amount);
+//    public boolean decideDiscountIsApplicableToCart(Cart cart){
+//        return cart.calculateCartTotalAmount() > thresholdAmount;
+//    }
 
-    public UUID getDiscountId() {
-        return discountId;
+    public abstract Double calculateCartAmountAfterDiscountApplied(Double amount);
+
+    public UUID getId() {
+        return id;
     }
 
     public String getName() {
@@ -26,4 +31,6 @@ public abstract  class Discount {
     public Double getThresholdAmount() {
         return thresholdAmount;
     }
+
+
 }

@@ -44,14 +44,14 @@ public class main {
                     }
                     break;
                 case 1: //list products  //product name, product category name
-                    try{
-                        for(Product product : StaticConstants.PRODUCT_LIST){
+                    try {
+                        for (Product product : StaticConstants.PRODUCT_LIST) {
                             System.out.println("Product Name:" + product.getName() + "Product Category Name:" + product.getCategoryName());
                         }
-                    }catch(Exception e){
+                    } catch (Exception e) {
                         //getMessage()comes throws from Product class(getProductCategoryName())//my getmessage is holding
                         // throw new Exception("Category not found," + getName());
-                        System.out.println("Product could not printed because category not found for product name:" + e.getMessage().split(",")[1] );
+                        System.out.println("Product could not printed because category not found for product name:" + e.getMessage().split(",")[1]);
 
                     }
                     break;
@@ -129,11 +129,24 @@ public class main {
                             break;
                         }
                         System.out.println("seems there are discount options. Do you want to see and apply to your cart if it is applicable. For no discount type no");
-for(Discount discount:StaticConstants.DISCOUNT_LIST){
-    System.out.println("Discount id: "+discount.getDiscountId()+" Discount name: "+discount.getName());
-    String discountId=scanner.next();
+                        for (Discount discount : StaticConstants.DISCOUNT_LIST) {
+                            System.out.println("Discount id: " + discount.getId() + " Discount name: " + discount.getName());
+                            String discountId = scanner.next();
+                            if (!discountId.equals("no")){
+                                try {
+                                    Discount discount1 = findDiscountById(discountId);
+//                                    if (discount.decideDiscountIsApplicableToCart(Cart cart)) {
+//                                        cart.setDiscountId(discount.getId());
+//                                    }
 
-}
+                                } catch (Exception e) {
+                                    System.out.println(e.getMessage());
+                                }
+
+                            }
+
+
+                        }
                     }
                     break;
                 case 6:
@@ -152,22 +165,31 @@ for(Discount discount:StaticConstants.DISCOUNT_LIST){
 
     }
 
+    private static Discount findDiscountById(String discountId) throws Exception {
+        for(Discount discount: StaticConstants.DISCOUNT_LIST){
+            if(discount.getId().toString().equals(discountId)){
+                return discount;
+            }
+        }
+        throw new Exception("Discount couldn't applied because couldn't found");
+    }
+
     private static boolean putItemToCartIfStockAvailable(Cart cart, Product product) {
         System.out.println("Please provide product count:");
-        Scanner scanner=new Scanner(System.in);
-        int count= scanner.nextInt();
-   //if you have already    items in yoour cart. how many existing product in your card?I should know
+        Scanner scanner = new Scanner(System.in);
+        int count = scanner.nextInt();
+        //if you have already    items in yoour cart. how many existing product in your card?I should know
 
-Integer cartCount=cart.getProductMap().get(product);
+        Integer cartCount = cart.getProductMap().get(product);
 
-if(cartCount!=0 && product.getRemainingStock()>cartCount+count){//something in the cart
-cart.getProductMap().put(product, cartCount+count);
-return true;
-}else if(product.getRemainingStock()>=count){
-    cart.getProductMap().put(product,count);
-    return true;
-}
-return false;
+        if (cartCount != 0 && product.getRemainingStock() > cartCount + count) {//something in the cart
+            cart.getProductMap().put(product, cartCount + count);
+            return true;
+        } else if (product.getRemainingStock() >= count) {
+            cart.getProductMap().put(product, count);
+            return true;
+        }
+        return false;
     }
 
     private static Product findProductById(String productId) throws Exception {
@@ -215,7 +237,6 @@ return false;
         return giftCardBalance;
 
     }
-
 
 
 }

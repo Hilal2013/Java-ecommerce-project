@@ -16,8 +16,8 @@ private Double discountAmount;
     }
 
     @Override
-    public Double calculateCartAmountAfterDiscount(Double amount) {
-
-        return null;
+    public Double calculateCartAmountAfterDiscountApplied(Double amount) {
+        return amount - discountAmount;
     }
+
 }
