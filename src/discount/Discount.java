@@ -1,6 +1,6 @@
 package discount;
 
-import java.lang.reflect.AnnotatedWildcardType;
+
 import java.util.UUID;
 
 public abstract  class Discount {
