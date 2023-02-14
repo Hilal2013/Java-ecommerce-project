@@ -5,10 +5,7 @@ import category.Category;
 import customer.Customer;
 import discount.Discount;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.UUID;
+import java.util.*;
 
 public class main {
     public static void main(String[] args) {
@@ -18,7 +15,10 @@ public class main {
         DataGenerator.createProduct();
         DataGenerator.createBalance();
         DataGenerator.createDiscount();
-
+        //to confirm address
+        printAddressByCustomerId(StaticConstants.CUSTOMER_LIST.get(0));
+        //Address{StreetNumber='7925', StreetName='Jones Branch Dr', ZipCode='22102', State='VA'}
+        //Address{StreetNumber='825', StreetName='GeorgeTown Pky', ZipCode='22036', State='VA'}
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select Customer");
         for (int i = 0; i < StaticConstants.CUSTOMER_LIST.size(); i++) {
@@ -214,7 +214,7 @@ public class main {
 
     private static CustomerBalance findCustomerBalance(UUID customerId) {
         for (Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST) {
-            if (customerBalance.getCustomerID().toString().equals(customerId.toString())) {
+            if (customerBalance.getCustomerId().toString().equals(customerId.toString())) {
                 return (CustomerBalance) customerBalance;
             }
         }
@@ -227,7 +227,7 @@ public class main {
 
     private static GiftCardBalance findGiftCardBalance(UUID customerId) {
         for (Balance giftCardBalance : StaticConstants.GIFT_CARD_BALANCE_LIST) {
-            if (giftCardBalance.getCustomerID().toString().equals(customerId.toString())) {
+            if (giftCardBalance.getCustomerId().toString().equals(customerId.toString())) {
                 return (GiftCardBalance) giftCardBalance;
             }
         }
@@ -237,6 +237,20 @@ public class main {
         return giftCardBalance;
 
     }
+    private static void printAddressByCustomerId(Customer customer) {
+        customer.getAdress().stream()
+                .map(Objects::toString)
+                .forEach(System.out::println);
 
+
+     /*
+        for (Address address : customer.getAddress()) {
+            System.out.println(" Street Name: " + address.getStreetName() +
+                    " Street Number: " + address.getStreetNumber() + "ZipCode:  "
+                    + address.getZipCode() + " State: " + address.getState());
+        }
+
+      */
+    }
 
 }
