@@ -213,6 +213,14 @@ public class main {
     }
 
     private static CustomerBalance findCustomerBalance(UUID customerId) {
+/*
+  return      StaticConstants.CUSTOMER_BALANCE_LIST.stream()
+                .map(Balance::getCustomerId)
+                .filter(each->each.toString().equals(customerId.toString()))
+
+
+ */
+
         for (Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST) {
             if (customerBalance.getCustomerId().toString().equals(customerId.toString())) {
                 return (CustomerBalance) customerBalance;
@@ -222,6 +230,8 @@ public class main {
         CustomerBalance customerBalance = new CustomerBalance(customerId, 0d);//itisnot inthe database it is now in cloud
         StaticConstants.CUSTOMER_BALANCE_LIST.add(customerBalance);
         return customerBalance;
+
+
 
     }
 
