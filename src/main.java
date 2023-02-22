@@ -25,7 +25,14 @@ public class main {
             System.out.println("Type " + i + " for customer: " + StaticConstants.CUSTOMER_LIST.get(i).getUserName());
         }
 //I need to capture object
-        Customer customer = StaticConstants.CUSTOMER_LIST.get(scanner.nextInt());
+        Customer customer = null;
+        try {
+            customer = StaticConstants.CUSTOMER_LIST.get(scanner.nextInt());
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("There is no customer that has this number.Try again please");
+            customer = StaticConstants.CUSTOMER_LIST.get(scanner.nextInt());
+        }
+
         //right now customer logged in system
         //example on amazon you add products on card//you are done no
         // whenever you loged out your application is done//
@@ -213,13 +220,7 @@ public class main {
     }
 
     private static CustomerBalance findCustomerBalance(UUID customerId) {
-/*
-  return      StaticConstants.CUSTOMER_BALANCE_LIST.stream()
-                .map(Balance::getCustomerId)
-                .filter(each->each.toString().equals(customerId.toString()))
 
-
- */
 
         for (Balance customerBalance : StaticConstants.CUSTOMER_BALANCE_LIST) {
             if (customerBalance.getCustomerId().toString().equals(customerId.toString())) {
